@@ -551,7 +551,8 @@ for (var i = 0; i < numberOfCollectables; i++) {
     canyon = [];
 var spacing = 500; // Minimum horizontal distance between canyons
 var numberOfCanyons = 500; // You can set this higher for a longer level
-
+var playerStartX = width / 2;
+	
 for (var i = 0; i < numberOfCanyons; i++) {
     var x = i * spacing + random(100, 300); // Add randomness to spacing
     var w = random(80, 150); // Vary the width between 80 and 150
