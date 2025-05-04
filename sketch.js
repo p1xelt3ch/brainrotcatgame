@@ -555,6 +555,10 @@ var numberOfCanyons = 500; // You can set this higher for a longer level
 for (var i = 0; i < numberOfCanyons; i++) {
     var x = i * spacing + random(100, 300); // Add randomness to spacing
     var w = random(80, 150); // Vary the width between 80 and 150
+if (abs(x - playerStartX) < 200) {
+        x += 300; // Push it further away
+    }
+	
     canyon.push({ x_pos: x, width: w });
 }
 
