@@ -551,17 +551,13 @@ for (var i = 0; i < numberOfCollectables; i++) {
     canyon = [];
 var spacing = 500; // Minimum horizontal distance between canyons
 var numberOfCanyons = 500; // You can set this higher for a longer level
-var safeStartZone = 400;
 	
 for (var i = 0; i < numberOfCanyons; i++) {
     var x = i * spacing + random(100, 300); // Add randomness to spacing
-    if (x < safeStartZone + 100) {
-        x += safeStartZone; // Push it forward
-    }
-	var w = random(80, 150); // Vary the width between 80 and 150
+	var w = random(80, 120); // Vary the width between 80 and 150
  // Push it further away
 	
-    canyon.push({ x_pos: x, width: w });
+    canyon.push({ x_pos: x + 200, width: w });
 }
 
     
