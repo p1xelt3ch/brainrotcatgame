@@ -1,9 +1,3 @@
-/*
-Game Project Part 8
-Coursework 2.2 Submission
-
-
-*/
 var img;
 var img1;
 var img2;
@@ -74,7 +68,7 @@ function preload()
 
 function setup()
 {
-	createCanvas(1024, 576);
+	createCanvas(windowWidth, windowHeight);
     if(img)
         {
             console.log("success");
@@ -721,4 +715,9 @@ function Enemies(x, y, range)
         return false;
     }
 
+}
+
+function windowResized() {
+    resizeCanvas(windowWidth, windowHeight);
+    floorPos_y = height * 3/4;
 }
