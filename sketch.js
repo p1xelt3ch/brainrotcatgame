@@ -411,10 +411,10 @@ function drawMountains()
         {
                 stroke(150,75,0,90);
                 fill(150,75,0,50);
-                triangle(mountains[i], 99, mountains[i]+70, 432, mountains[i]-90, 432);
+                triangle(mountains[i], floorPos_y-300, mountains[i]+70, floorPos_y, mountains[i]-90, floorPos_y);
                 fill(255,255,255,90);
                 stroke(255,255,255,100)
-                triangle(mountains[i], 99, mountains[i]+10, 150, mountains[i]-10, 150);
+                triangle(mountains[i], floorPos_y-300, mountains[i]+10, floorPos_y-250, mountains[i]-10, floorPos_y-250);
         }
 }
 
@@ -424,10 +424,10 @@ function drawTrees()
         for (var i = 0; i < trees_x.length; i++)
         {
             fill(150,75,0);
-            rect(trees_x[i],326,50,106);
+            rect(trees_x[i],floorPos_y-100,50,106);
             fill(0,255,0);
-            triangle(trees_x[i]-50, 326, trees_x[i] + 100, 326, trees_x[i] + 25, 220);
-            triangle(trees_x[i]-50, 376, trees_x[i] + 100, 376, trees_x[i] + 25, 220);
+            triangle(trees_x[i]-50, floorPos_y-100, trees_x[i] + 100, floorPos_y-100, trees_x[i] + 25, floorPos_y-200);
+            triangle(trees_x[i]-50, floorPos_y-50, trees_x[i] + 100, floorPos_y-50, trees_x[i] + 25, floorPos_y-200);
         }
 }
 
