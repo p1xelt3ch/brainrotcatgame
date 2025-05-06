@@ -43,7 +43,6 @@ function preload()
 {
     soundFormats('mp3','wav');
     
-    //load your sounds here
     jumpSound = loadSound('assets/jump.wav');
     jumpSound.setVolume(0.1);
     
@@ -86,17 +85,14 @@ function setup()
 
 function draw()
 {
-	///////////DRAWING CODE//////////
-    translate(-gameChar_x+510, 0);
-	background(100,155,255); //fill the sky blue
 
-    //Mountain
+    translate(-gameChar_x+510, 0);
+	background(100,155,255);
+
     drawMountains();
-    
-    //Trees
+
     drawTrees();
-    
-    //Clouds
+
     drawClouds();
     
     if(gameChar_y < floorPos_y)
@@ -108,7 +104,7 @@ function draw()
 {
     isFalling = false;
     isContact = true;
-    standingY = platforms[i].y; // New!
+    standingY = platforms[i].y;
     break;
 }
                     
@@ -117,7 +113,7 @@ function draw()
 {
     gameChar_y += 3;
     isFalling = true;
-    standingY = floorPos_y; // New!
+    standingY = floorPos_y;
 }
         }
     
@@ -129,7 +125,7 @@ function draw()
 
 	noStroke();
 	fill(0,155,0);
-	rect(-width, floorPos_y, width*width, height - floorPos_y); //draw some green ground
+	rect(-width, floorPos_y, width*width, height - floorPos_y);
     
     push();
     translate(-cameraPosX, 0);
@@ -154,15 +150,13 @@ function draw()
         {
             platforms[i].draw();
         }
-    
-	//draw the canyon
+
     for (var i = 0; i < canyon.length; i++)
         {
             drawCanyon(canyon[i]);
             checkCanyon(canyon[i]);
         }
-        
-    //draw a collectable item
+
     for (var i = 0; i < collectables.length; i++)
         {
             if(!collectables[i].isFound)
@@ -219,7 +213,6 @@ function draw()
     pop();
     
 	///////////INTERACTION CODE//////////
-	//Put conditional statements to move the game character below here
 
     if(isLeft == true)
         {
@@ -244,7 +237,7 @@ function drawGameChar()
 {
 	if(isLeft && isFalling)
 	{
-    // add your jumping-left code
+    // jumping-left code
 if (frameCount % 10 < 5) 
         {
             image(img1, gameChar_x, gameChar_y - 100);
@@ -261,7 +254,7 @@ if (frameCount % 10 < 5)
 	
     else if(isRight && isFalling)
 	{
-    // add your jumping-right code
+    // jumping-right code
 if (frameCount % 10 < 5) 
         {
             image(img1, gameChar_x, gameChar_y - 100);
@@ -278,7 +271,7 @@ if (frameCount % 10 < 5)
 	
     else if(isLeft)
 	{
-    // add your walking left code
+    // walking left code
         if (frameCount % 10 < 5) 
         {
             image(img1, gameChar_x, gameChar_y - 100);
@@ -295,7 +288,7 @@ if (frameCount % 10 < 5)
 	
     else if(isRight)
 	{
-    // add your walking right code
+    // walking right code
         if (frameCount % 10 < 5) 
         {
             image(img1, gameChar_x, gameChar_y - 100);
@@ -312,14 +305,14 @@ if (frameCount % 10 < 5)
 	
     else if(isFalling || isPlummeting)
 	{
-    // add your jumping facing forwards code
+    // jumping facing forwards code
 image(img, gameChar_x, gameChar_y-100);
         img.resize(50,100);
     }
 	
     else
 	{
-    // add your standing front facing code
+    // standing front facing code
         image(img, gameChar_x, gameChar_y-100);
         img.resize(50,100);
     
@@ -330,8 +323,7 @@ image(img, gameChar_x, gameChar_y-100);
 
 function keyPressed()
 {
-	// if statements to control the animation of the character when
-	// keys are pressed.
+
     if(keyCode == 65)
         {
             isLeft = true;
@@ -360,18 +352,12 @@ function keyPressed()
             checkFlagpole();
         }*/
     
-
-	//open up the console to see how these work
-	console.log("keyPressed: " + key);
-	console.log("keyPressed: " + keyCode);
-    
 }
 
 
 function keyReleased()
 {
-	// if statements to control the animation of the character when
-	// keys are released.
+
     if(keyCode == 65)
         {
             isLeft = false;
@@ -537,10 +523,10 @@ var numberOfCollectables = 999;
 var currentX_collectable = 0;
 
 for (var i = 0; i < numberOfCollectables; i++) {
-    var gap = random(200, 500); // random distance between items
+    var gap = random(200, 500);
     currentX_collectable += gap;
 
-    var yOffset = random([-32, -100]); // either on ground or higher up
+    var yOffset = random([-32, -100]);
     collectables.push({
         x_pos: currentX_collectable,
         y_pos: floorPos_y + yOffset,
@@ -549,13 +535,12 @@ for (var i = 0; i < numberOfCollectables; i++) {
 }
     
     canyon = [];
-var spacing = 500; // Minimum horizontal distance between canyons
-var numberOfCanyons = 500; // You can set this higher for a longer level
+var spacing = 500;
+var numberOfCanyons = 500;
 	
 for (var i = 0; i < numberOfCanyons; i++) {
-    var x = i * spacing + random(100, 300); // Add randomness to spacing
-	var w = random(80, 120); // Vary the width between 80 and 150
- // Push it further away
+    var x = i * spacing + random(100, 300);
+	var w = random(80, 120);
 	
     canyon.push({ x_pos: x + 200, width: w });
 }
@@ -571,7 +556,7 @@ var numberOfTrees = 400;
 var currentX_tree = 0;
 
 for (var i = 0; i < numberOfTrees; i++) {
-    var gap = random(100, 600); // more varied gap between trees
+    var gap = random(100, 600);
     currentX_tree += gap;
     trees_x.push(currentX_tree);
 }
@@ -581,9 +566,9 @@ var numberOfClouds = 500;
 var currentX = 0;
 
 for (var i = 0; i < numberOfClouds; i++) {
-    var gap = random(200, 400); // spacing between clouds
+    var gap = random(200, 400);
     var x = currentX + gap;
-    var y = random(50, 200); // sky height
+    var y = random(50, 200);
 
     clouds.push({ x_pos: x, y_pos: y });
 
@@ -595,7 +580,7 @@ var numberOfMountains = 300;
 var currentX_mountain = 0;
 
 for (var i = 0; i < numberOfMountains; i++) {
-    var gap = random(200, 900); // mountains are wider
+    var gap = random(200, 900);
     currentX_mountain += gap;
     mountains.push(currentX_mountain);
 }
@@ -610,9 +595,9 @@ var numberOfPlatforms = 600;
 var currentX = 0;
 
 for (var i = 0; i < numberOfPlatforms; i++) {
-    var gap = random(150, 400); // random spacing between platforms
-    var length = random(80, 150); // random platform width
-    var y = floorPos_y - 80; // varied height
+    var gap = random(150, 400);
+    var length = random(80, 150);
+    var y = floorPos_y - 80;
 
     currentX += gap;
     platforms.push(createPlatforms(currentX, y, length));
@@ -625,11 +610,11 @@ var numberOfEnemies = 50;
 var currentX_enemy = 0;
 
 for (var i = 0; i < numberOfEnemies; i++) {
-    var gap = random(300, 800); // spacing between enemies
+    var gap = random(300, 800);
     currentX_enemy += gap;
 
-    var range = random(80, 200); // how far the enemy moves left/right
-    var y = floorPos_y; // always place on the ground
+    var range = random(80, 200);
+    var y = floorPos_y;
 
     enemies.push(new Enemies(currentX_enemy, y, range));
 }
