@@ -200,7 +200,22 @@ function draw()
     noStroke();
     textSize(40);
     text("lives: " + lives, gameChar_x - 500, 80);
+
+    fill(0);
+    noStroke();
+    textSize(20); 
+    text("Controls: ", gameChar_x - 500, 120);
+    text("W", gameChar_x - 380, 110);
+    text("A", gameChar_x - 400, 135);
+    text("D", gameChar_x - 355, 135);
     
+    noFill();
+    stroke(2);
+    ellipse(gameChar_x - 371, 100, 30,30);
+    ellipse(gameChar_x - 394, 125, 30,30);
+    ellipse(gameChar_x - 348, 125, 30,30);
+    noStroke();
+	
     //renderFlagpole();
 
     checkPlayerDie();
